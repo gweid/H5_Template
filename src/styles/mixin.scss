@@ -1,0 +1,50 @@
+// 宽高
+@mixin wh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// 字体
+@mixin font($fontSize, $color, $fontWeight) {
+  font-size: $fontSize; /* px */
+  color: $color;
+  font-weight: $fontWeight;
+}
+
+// 背景图
+@mixin backgroundImage($width, $height, $url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: $width;
+  height: $height;
+}
+
+// 绝对定位
+@mixin absolute($left, $top, $right, $bottom, $tranLeft, $tranTop,) {
+  position: absolute;
+  left: $left;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  transform: translate($tranLeft, $tranTop);
+}
+//
+@mixin line($size, $type, $color, $top, $right, $bottom, $left, $scaleY, $radius) {
+  content: '';
+  border: $size $type $color;
+  position: absolute;
+  top: $top;
+  left: $left;
+  right: $right;
+  bottom: $bottom;
+  transform: scaleY($scaleY);
+  border-radius: $radius;
+  height: 100%;
+}
+
+@mixin flex($justify,$align) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
