@@ -1,3 +1,3 @@
 # mengxiaoer_hujin
 
-互金嵌入盟小二
+vue集成axios、vant-ui、rem适配的H5移动端开发模板
