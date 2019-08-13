@@ -21,7 +21,7 @@ module.exports = {
             },
             postcss: {
                 // 给 postcss-loader 传递选项
-                plugins: [require('postcss-px2rem')({ remUnit: 75 }), require('autoprefixer')(['iOS >= 7', 'Android >= 4.1'])]
+                plugins: [require('postcss-px2rem')({ remUnit: 37.5 }), require('autoprefixer')(['iOS >= 7', 'Android >= 4.1'])]
             }
         }
     },

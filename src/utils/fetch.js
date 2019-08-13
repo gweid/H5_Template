@@ -28,6 +28,11 @@ const service = Axios.create({
 // axios 请求拦截器
 service.interceptors.request.use(
     config => {
+        Toast.loading({
+            mask: false,
+            forbidClick: true,
+            loadingType: "spinner"
+        })
         return config
     },
     err => {
@@ -38,6 +43,9 @@ service.interceptors.request.use(
 // axios 响应拦截器
 service.interceptors.response.use(
     res => {
+        setTimeout(() => {
+            Toast.clear()
+        }, 200)
         return res
     },
     err => {

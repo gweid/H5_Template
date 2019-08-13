@@ -22,8 +22,9 @@ import service from './utils/fetch'
 //   )
 // }
 
-import {ActionSheet, Toast } from 'vant'
-Vue.component(ActionSheet.name, ActionSheet)
+import {Tabbar, TabbarItem ,Toast } from 'vant'
+Vue.component(Tabbar.name, Tabbar)
+Vue.component(TabbarItem.name, TabbarItem)
 
 function toast(message) {
   Toast({

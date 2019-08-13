@@ -1,12 +1,20 @@
 <template>
-    <div class="header-box">
-        <div class="loan-header" :class="{ 'iphone-header': isIphoneType, 'iphoneX-header': isInphoneXType, 'no-bg': titleData.imgType == 0 }">
-            <img src="../assets/img/ic_back_white.png" class="back-btn" v-if="titleData.imgType == 0" @click="backClick" />
-            <img src="../assets/img/ic_back_black.png" class="back-btn" v-else @click="backClick" />
-            {{ titleData.name }}
-            <div class="header-right" @click="headerRightClick">{{ titleData.rightData }}</div>
-        </div>
+  <div class="header-box">
+    <div
+      class="loan-header"
+      :class="{ 'iphone-header': isIphoneType, 'iphoneX-header': isInphoneXType, 'no-bg': titleData.imgType == 0 }"
+    >
+      <img
+        src="../assets/img/ic_back_white.png"
+        class="back-btn"
+        v-if="titleData.imgType == 0"
+        @click="backClick"
+      />
+      <img src="../assets/img/ic_back_black.png" class="back-btn" v-else @click="backClick" />
+      {{ titleData.title }}
+      <div class="header-right" @click="headerRightClick">{{ titleData.rightData }}</div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -28,7 +36,14 @@ export default {
     },
     props: {
         titleData: {
-            type: Object
+            type: Object,
+            default() {
+                return {
+                    title: '首页',
+                    imgType: 1,
+                    rightData: ''
+                }
+            }
         }
     },
     watch: {},
@@ -124,7 +139,7 @@ export default {
         }
     }
     .iphone-header {
-        top: .533333rem;
+        top: 0.533333rem;
     }
     .iphoneX-header {
         top: 0;
