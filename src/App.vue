@@ -1,9 +1,22 @@
 <template>
-  <div id="app" class="app-box" :class="{'iphone-top':isIphoneType,'iphoneX-top':isInphoneXType}" v-cloak>
-      <div class="app-top-bg" :class="{'normal-height':isIphoneType,'high-height':isInphoneXType}"></div>
+  <div
+    id="app"
+    class="app-box"
+    :class="{'iphone-top':isIphoneType,'iphoneX-top':isInphoneXType}"
+    v-cloak
+  >
+    <div class="app-top-bg" :class="{'normal-height':isIphoneType,'high-height':isInphoneXType}"></div>
     <!-- <transition name="router-fade" mode="out-in"> -->
-    <router-view/>
+    <div class="view-box">
+      <router-view />
+    </div>
     <!-- </transition> -->
+    <van-tabbar v-model="active">
+      <van-tabbar-item name="home" to="/" icon="home-o">首页</van-tabbar-item>
+      <van-tabbar-item name="search" to="/test" icon="search">搜索</van-tabbar-item>
+      <van-tabbar-item name="friends" icon="friends-o">合作</van-tabbar-item>
+      <van-tabbar-item name="setting" icon="setting-o">设置</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
@@ -13,16 +26,17 @@ export default {
     data() {
         return {
             isInphoneXType: false,
-            isIphoneType: false
+            isIphoneType: false,
+            active: 'home'
         }
     },
     mounted() {
-        this.getPhoneType();
+        this.getPhoneType()
     },
     methods: {
         isIphonex() {
             let platform = navigator.userAgent.toLowerCase()
-            const isIPhoneX =  /iphone/.test(platform) && screen.width === 375 && screen.height === 812
+            const isIPhoneX = /iphone/.test(platform) && screen.width === 375 && screen.height === 812
             // iPhone XS Max
             const isIPhoneXSMax = /iphone/.test(platform) && screen.width === 414 && screen.height === 896
             // iPhone XR
@@ -37,10 +51,10 @@ export default {
         // 判断ios版本号是否大于1
         getPhoneType() {
             if (this.isIphonex()) {
-                this.isInphoneXType = true;
+                this.isInphoneXType = true
             } else {
                 if (this.isIphone()) {
-                    this.isIphoneType = true;
+                    this.isIphoneType = true
                 }
             }
         }
@@ -69,12 +83,13 @@ export default {
 #app.app-box {
     box-sizing: border-box;
     overflow-y: hidden;
+    display: flex;
 }
 #app.iphone-top {
-    padding-top: .533333rem;
+    padding-top: 0.533333rem;
 }
 #app.iphoneX-top {
-    padding-top: 0 
+    padding-top: 0;
 }
 .app-top-bg {
     position: fixed;
@@ -82,12 +97,21 @@ export default {
     width: 100%;
     z-index: 990;
 }
+.view-box {
+    flex: 1;
+    padding-bottom: 50px;
+}
+.navbar-box {
+    width: 375px;
+    height: 100px;
+    background-color: pink;
+}
 .high-height {
     height: 0;
     // background-color: pink;
 }
-.normal-height{
-    height: .533333rem;
+.normal-height {
+    height: 0.533333rem;
     background-color: #fff;
 }
 </style>

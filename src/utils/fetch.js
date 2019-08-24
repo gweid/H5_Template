@@ -10,15 +10,16 @@ const service = Axios.create({
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     },
+    // 在请求之前改变请求参数
     transformRequest: data => {
+        // 合并参数
         data = Object.assign(data, { deviceid: sessionStorage.getItem('deviceid') })
         const arr = []
         for (const key in data) {
             arr.push(`${key}=${data[key]}`)
         }
-
         let str = arr.sort().join('&')
-        str = Md5(`${str}&key=chaomeng`)
+        str = Md5(`${str}&key=chaomeng`) // Md5 加密
         data = Object.assign(data, { sign: str })
 
         return Qs.stringify(data)

@@ -22,9 +22,11 @@ import service from './utils/fetch'
 //   )
 // }
 
-import {Tabbar, TabbarItem ,Toast } from 'vant'
+import {Tabbar, TabbarItem, Toast, NavBar, List } from 'vant'
 Vue.component(Tabbar.name, Tabbar)
 Vue.component(TabbarItem.name, TabbarItem)
+Vue.component(NavBar.name, NavBar)
+Vue.component(List.name, List)
 
 function toast(message) {
   Toast({
